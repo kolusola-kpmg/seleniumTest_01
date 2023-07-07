@@ -12,7 +12,7 @@ namespace SeleniumDemo
     public class SearchGoogle
     {
         [TestMethod]
-        public void SearchForCheese()
+        public void SearchForCompany()
         {
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArguments("headless");
@@ -27,7 +27,7 @@ namespace SeleniumDemo
                 IWebElement query = driver.FindElement(By.Name("q"));
 
                 // Enter something to search for
-                query.SendKeys("Cheese");
+                query.SendKeys("KPMG Malta");
 
                 // Now submit the form. WebDriver will find the form for us from the element
                 query.Submit();
@@ -35,10 +35,10 @@ namespace SeleniumDemo
                 // Google's search is rendered dynamically with JavaScript.
                 // Wait for the page to load, timeout after 10 seconds
                 var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                wait.Until(d => d.Title.StartsWith("cheese", StringComparison.OrdinalIgnoreCase));
+                wait.Until(d => d.Title.StartsWith("kpmg malta", StringComparison.OrdinalIgnoreCase));
 
-                // Should see: "Cheese - Google Search" (for an English locale)
-                Assert.AreEqual(driver.Title, "Cheese - Google Search");
+                // Should see: "KPMG Malta - Google Search" (for an English locale)
+                Assert.AreEqual(driver.Title, "KPMG Malta - Google Search");
             }
 
         }
